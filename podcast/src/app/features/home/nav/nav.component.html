@@ -1,0 +1,28 @@
+<header class="p-4 dark:bg-coolGray-800 dark:text-coolGray-100 fixed w-full top-0 z-50">
+    <div class="container flex justify-between h-16 mx-auto">
+        <a rel="noopener noreferrer" [routerLink]="['/home']" aria-label="Back to homepage"
+            class="flex items-center p-2">
+            <img src="../../../../assets/images/logo.png" alt="LOGO" width="50" height="50" />
+            <span
+                class="text-xl ml-2 font-extrabold text-transparent sm:text-2xl bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">PODCAST</span>
+        </a>
+
+        <div class="items-center flex-shrink-0 hidden lg:flex">
+            <button routerLink="/login"
+                class="text-2xl self-center px-8 py-3 rounded font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+                Sign in
+            </button>
+            <button routerLink='/signup'
+                class="self-center text-white px-8 py-3 font-semibold rounded bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+                Register
+            </button>
+        </div>
+        <button class="p-4 lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6 dark:text-coolGray-100">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </div>
+</header>

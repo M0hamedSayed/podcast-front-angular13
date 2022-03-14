@@ -1,0 +1,226 @@
+<!-- Register speaker Section
+<p class="text-center  text-3xl">Join Us.</p>
+<form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();">
+    <div class="flex flex-row pt-4">
+        <div class="pr-3 w-6/12"><label for="name" class="text-lg">First Name</label>
+            <input type="text" [(ngModel)]="speaker.firstName" name="firstName" placeholder="Mohamed"
+                autocomplete="given-name"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+        <div class="w-6/12"><label for="name" class="text-lg">Last Name</label>
+            <input type="text" [(ngModel)]="speaker.lastName" name="lastName" placeholder="Sayed"
+                autocomplete="family-name"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+    </div>
+
+    <div class="flex flex-col pt-4">
+        <label for="email" class="text-lg">Email</label>
+        <input type="email" [(ngModel)]="speaker.email" name="email" placeholder="your@email.com"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+
+    <div class="flex flex-col pt-4">
+        <label for="name" class="text-lg">Address</label>
+        <div class="flex flex-row">
+            <div class="pr-2 w-6/12">
+                <input type="text" [(ngModel)]="speaker.address.city" name="city" placeholder="City"
+                    autocomplete="address-level1"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            <div class="w-3/12 pr-2">
+                <input type="number" [(ngModel)]="speaker.address.street" name="street" autocomplete="off"
+                    placeholder="Street"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            <div class="w-3/12">
+                <input type="number" [(ngModel)]="speaker.address.building" name="building" placeholder="Building"
+                    autocomplete="off"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col pt-4">
+        <label for="password" class="text-lg">Password</label>
+        <input type="password" [(ngModel)]="speaker.password" name="password" placeholder="Password"
+            autocomplete="new-password"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+
+    <div class="flex flex-col pt-4">
+        <label for="confirm-password" class="text-lg">Confirm Password</label>
+        <input type="password" [(ngModel)]="speaker.passwordConfirm" name="passwordConfirm" placeholder="Password"
+            autocomplete="new-password"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+
+    <button (click)="register()"
+        class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">Register</button>
+</form>
+<div class="text-center pt-12 pb-12">
+    <p>Already have an account? <a href="#" class="underline font-semibold">Log in here.</a></p>
+</div> -->
+
+<!-- Register speaker Section -->
+<p class="text-center  text-3xl">Join Us.</p>
+<form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();" [formGroup]="speakerForm">
+    <div class="flex flex-row pt-4">
+        <div class="pr-3 w-6/12"><label for="name" class="text-lg">First Name</label>
+            <input type="text" formControlName="firstName" name="firstName" placeholder="Mohamed" autocomplete="off"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                [ngClass]="{'is-invalid': (speakerForm.get('firstName')?.touched || speakerForm.get('firstName')?.dirty) && !speakerForm.get('firstName')?.valid }" />
+            <span class="invalid-feedback"
+                *ngIf="(speakerForm.get('firstName')?.touched || speakerForm.get('firstName')?.dirty)">
+                <span *ngIf="speakerForm.get('firstName')?.errors?.['required']">
+                    Please enter your first name.
+                </span>
+                <span *ngIf="speakerForm.get('firstName')?.errors?.['pattern'] &&
+                    (!speakerForm.get('firstName')?.errors?.['minlength'] ||
+                    !speakerForm.get('firstName')?.errors?.['maxlength'])">
+                    must be string.
+                </span>
+                <span *ngIf="speakerForm.get('firstName')?.errors?.['minlength']">
+                    must be longer than 3 characters.
+                </span>
+                <span *ngIf="speakerForm.get('firstName')?.errors?.['maxlength']">
+                    must be less than 20 characters.
+                </span>
+            </span>
+        </div>
+        <div class="w-6/12"><label for="name" class="text-lg">Last Name</label>
+            <input type="text" formControlName="lastName" name="lastName" placeholder="Sayed" autocomplete="off"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                [ngClass]="{'is-invalid': (speakerForm.get('lastName')?.touched || speakerForm.get('lastName')?.dirty) && !speakerForm.get('lastName')?.valid }" />
+            <span class="invalid-feedback"
+                *ngIf="(speakerForm.get('lastName')?.touched || speakerForm.get('lastName')?.dirty)">
+                <span *ngIf="speakerForm.get('lastName')?.errors?.['required']">
+                    Please enter your last name.
+                </span>
+                <span *ngIf="speakerForm.get('lastName')?.errors?.['pattern'] &&
+                    (!speakerForm.get('lastName')?.errors?.['minlength'] ||
+                    !speakerForm.get('lastName')?.errors?.['maxlength'])">
+                    must be string.
+                </span>
+                <span *ngIf="speakerForm.get('lastName')?.errors?.['minlength']">
+                    must be longer than 3 characters.
+                </span>
+                <span *ngIf="speakerForm.get('lastName')?.errors?.['maxlength']">
+                    must be less than 20 characters.
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <div class="flex flex-col pt-4">
+        <label for="email" class="text-lg">Email</label>
+        <input type="email" formControlName="email" name="email" placeholder="your@email.com" autocomplete="off"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+            [ngClass]="{'is-invalid': (speakerForm.get('email')?.touched || speakerForm.get('email')?.dirty) && !speakerForm.get('email')?.valid }" />
+        <span class="invalid-feedback" *ngIf="(speakerForm.get('email')?.touched || speakerForm.get('email')?.dirty)">
+            <span *ngIf="speakerForm.get('email')?.errors?.['required']">
+                Your E-Mail is Required !!.
+            </span>
+            <span *ngIf="speakerForm.get('email')?.errors?.['pattern']">
+                Email Syntax is wrong.
+            </span>
+        </span>
+    </div>
+    <div class="flex flex-col pt-4">
+        <label for="name" class="text-lg">Address</label>
+        <div class="flex flex-row">
+            <div class="pr-2 w-6/12">
+                <input type="text" formControlName="city" name="city" placeholder="City" autocomplete="off"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                    [ngClass]="{'is-invalid': (speakerForm.get('city')?.touched || speakerForm.get('city')?.dirty) && !speakerForm.get('city')?.valid }" />
+                <span class="invalid-feedback"
+                    *ngIf="(speakerForm.get('city')?.touched || speakerForm.get('city')?.dirty)">
+                    <span *ngIf="speakerForm.get('city')?.errors?.['required']">
+                        City name is Required !!.
+                    </span>
+                    <span *ngIf="speakerForm.get('city')?.errors?.['pattern']">
+                        must be string between 3,20 chars
+                    </span>
+                </span>
+            </div>
+            <div class="w-3/12 pr-2">
+                <input type="number" formControlName="street" name="street" autocomplete="off" placeholder="Street"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                    [ngClass]="{'is-invalid': (speakerForm.get('street')?.touched || speakerForm.get('street')?.dirty) && !speakerForm.get('street')?.valid }" />
+                <span class="invalid-feedback"
+                    *ngIf="(speakerForm.get('street')?.touched || speakerForm.get('street')?.dirty)">
+                    <span *ngIf="speakerForm.get('street')?.errors?.['required']">
+                        street is Required!
+                    </span>
+                    <span *ngIf="speakerForm.get('street')?.errors?.['max']">
+                        max value 100
+                    </span>
+                </span>
+            </div>
+            <div class="w-3/12">
+                <input type="number" formControlName="building" name="building" placeholder="Building"
+                    autocomplete="off"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                    [ngClass]="{'is-invalid': (speakerForm.get('building')?.touched || speakerForm.get('building')?.dirty) && !speakerForm.get('building')?.valid }" />
+                <span class="invalid-feedback"
+                    *ngIf="(speakerForm.get('building')?.touched || speakerForm.get('building')?.dirty)">
+                    <span *ngIf="speakerForm.get('building')?.errors?.['required']">
+                        street is Required!
+                    </span>
+                    <span *ngIf="speakerForm.get('building')?.errors?.['max']">
+                        max value 100
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div formGroupName="passwordGroup">
+        <div class="flex flex-col pt-4">
+            <label for="password" class="text-lg">Password</label>
+            <input type="password" formControlName="password" name="password" placeholder="Password"
+                autocomplete="new-password"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                [ngClass]="{'is-invalid': speakerForm.get('passwordGroup')?.errors ||
+                ((speakerForm.get('passwordGroup.password')?.touched ||
+                speakerForm.get('passwordGroup.password')?.dirty) &&
+                !speakerForm.get('passwordGroup.password')?.valid) }" />
+            <span class="invalid-feedback"
+                *ngIf="(speakerForm.get('passwordGroup.password')?.touched || speakerForm.get('passwordGroup.password')?.dirty)">
+                <span *ngIf="speakerForm.get('passwordGroup.password')?.errors?.['required']">
+                    password is Required !!.
+                </span>
+                <span *ngIf="speakerForm.get('passwordGroup.password')?.errors?.['pattern']">
+                    Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more
+                    characters.
+                </span>
+            </span>
+        </div>
+
+        <div class="flex flex-col pt-4">
+            <label for="confirm-password" class="text-lg">Confirm Password</label>
+            <input type="password" formControlName="passwordConfirm" name="passwordConfirm"
+                placeholder="Password confirm" autocomplete="new-password"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                [ngClass]="{'is-invalid': speakerForm.get('passwordGroup')?.errors ||
+                ((speakerForm.get('passwordGroup.passwordConfirm')?.touched ||
+                speakerForm.get('passwordGroup.passwordConfirm')?.dirty) &&
+                !speakerForm.get('passwordGroup.passwordConfirm')?.valid) }" />
+            <span class="invalid-feedback"
+                *ngIf="(speakerForm.get('passwordGroup.passwordConfirm')?.touched || speakerForm.get('passwordGroup.passwordConfirm')?.dirty)">
+                <span *ngIf="speakerForm.get('passwordGroup.passwordConfirm')?.errors?.['required']">
+                    password confirm is Required !!.
+                </span>
+                <span *ngIf="speakerForm.get('passwordGroup')?.errors?.['match']">
+                    Two Passwords don't Match..
+                </span>
+            </span>
+        </div>
+    </div>
+
+
+    <button (click)="register()" [disabled]="!speakerForm.valid"
+        [title]="speakerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+        class="bg-violet-600 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">Register</button>
+</form>
+<div class="text-center pt-12 pb-12">
+    <p>Already have an account? <a href="#" class="underline font-semibold">Log in here.</a></p>
+</div>

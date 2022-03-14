@@ -1,0 +1,25 @@
+/* 95 130 246 */
+input:focus {
+    border: 2px solid rgb(59, 130, 246);
+    outline: none;
+}
+
+input.ng-valid {
+    border-color: green;
+    border-width: 2px;
+}
+
+input.is-invalid {
+    border-color: red;
+    border-width: 2px;
+}
+
+.invalid-feedback {
+    color: red
+}
+
+button:disabled {
+    cursor: wait;
+    /* background-color: red; */
+    opacity: 0.4;
+}
