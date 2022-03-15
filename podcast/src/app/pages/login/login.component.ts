@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ValidationAuthService } from './../../core/services/validation-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,14 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder, private validate: ValidationAuthService) { }
 
   ngOnInit(): void {
-    this.loginForm = this.validate.loginValidation(this.fb)
+    this.loginForm = this.validate.loginValidation(this.fb);
+    console.log(this.loginForm.value.email.errors);
+
   }
+
+  // navigate() {
+  //   this.router.navigateByUrl('home');
+  // }
+
 
 }

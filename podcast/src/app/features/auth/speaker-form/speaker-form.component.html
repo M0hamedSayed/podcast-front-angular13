@@ -66,7 +66,8 @@
 <form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();" [formGroup]="speakerForm">
     <div class="flex flex-row pt-4">
         <div class="pr-3 w-6/12"><label for="name" class="text-lg">First Name</label>
-            <input type="text" formControlName="firstName" name="firstName" placeholder="Mohamed" autocomplete="off"
+            <input type="text" formControlName="firstName" id="firstName" name="firstName" placeholder="Mohamed"
+                autocomplete="off"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 [ngClass]="{'is-invalid': (speakerForm.get('firstName')?.touched || speakerForm.get('firstName')?.dirty) && !speakerForm.get('firstName')?.valid }" />
             <span class="invalid-feedback"
@@ -88,7 +89,8 @@
             </span>
         </div>
         <div class="w-6/12"><label for="name" class="text-lg">Last Name</label>
-            <input type="text" formControlName="lastName" name="lastName" placeholder="Sayed" autocomplete="off"
+            <input type="text" formControlName="lastName" id="lastName" name="lastName" placeholder="Sayed"
+                autocomplete="off"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 [ngClass]="{'is-invalid': (speakerForm.get('lastName')?.touched || speakerForm.get('lastName')?.dirty) && !speakerForm.get('lastName')?.valid }" />
             <span class="invalid-feedback"
@@ -114,6 +116,7 @@
     <div class="flex flex-col pt-4">
         <label for="email" class="text-lg">Email</label>
         <input type="email" formControlName="email" name="email" placeholder="your@email.com" autocomplete="off"
+            id="email"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             [ngClass]="{'is-invalid': (speakerForm.get('email')?.touched || speakerForm.get('email')?.dirty) && !speakerForm.get('email')?.valid }" />
         <span class="invalid-feedback" *ngIf="(speakerForm.get('email')?.touched || speakerForm.get('email')?.dirty)">

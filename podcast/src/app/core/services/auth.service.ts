@@ -15,4 +15,6 @@ export class AuthService {
   register(registerData: SpeakerRegister | StudentRegister) {
     return this.http.post<SpeakerRegister | StudentRegister>(`${this.authUrl}/register`, registerData);
   }//handle registration for speaker and student
+
+
 }
