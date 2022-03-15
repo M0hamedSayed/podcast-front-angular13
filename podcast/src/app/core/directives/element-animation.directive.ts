@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, AfterViewInit } from '@angular/core';
 import gsap from 'gsap';
-
+import { Back } from 'gsap';
 @Directive({
   selector: '[appElementAnimation]'
 })

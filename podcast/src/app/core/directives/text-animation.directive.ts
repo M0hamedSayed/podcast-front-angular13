@@ -1,6 +1,6 @@
 import { Directive, Input, ElementRef, AfterViewInit } from '@angular/core';
 import gsap from 'gsap';
-
+import { Expo } from 'gsap';
 @Directive({
   selector: '[appTextAnimation]'
 })
@@ -15,9 +15,8 @@ export class TextAnimationDirective implements AfterViewInit {
   animationText() {
     let chars: Element = this.el.nativeElement;
     let content = chars.textContent?.toLowerCase();
-
     document.styleSheets[0].insertRule(
-      `.${content}[ng-reflect-attr-c-s-s]::before {
+      `.${content}::before {
         content:'${chars.textContent}';
         position: absolute;
         left: 0;
@@ -33,11 +32,11 @@ export class TextAnimationDirective implements AfterViewInit {
       duration: 3,
       yPercent: 0,
       stagger: 0.05,
-      ease: "expo.inOut"
+      ease: Expo.easeInOut
     }).to(chars, {
       duration: 3,
       yPercent: 110,
-      ease: "expo.inOut",
+      ease: Expo.easeInOut,
       repeat: -1,
       yoyo: true,
       stagger: 0.1

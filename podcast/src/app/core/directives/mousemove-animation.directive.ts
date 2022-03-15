@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import gsap from 'gsap';
-
+import { Expo } from 'gsap';
 @Directive({
   selector: '[appMousemoveAnimation]'
 })
