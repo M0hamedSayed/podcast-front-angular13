@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { opacity } from './core/utils/route-animation';
 import {
   transition,
@@ -9,7 +9,8 @@ import {
   group,
   animateChild
 } from '@angular/animations';
-import { RouterOutlet } from '@angular/router';
+import { NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -23,8 +24,26 @@ import { RouterOutlet } from '@angular/router';
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  subscription!: Subscription;
+  browserRefresh = false;
+  constructor(public router: Router) {
+    this.subscription = router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        console.log(router.navigated);
+
+        this.browserRefresh = !router.navigated;
+      }
+    });
+  }
+  ngOnInit(): void {
+
+  }
+
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    // console.log(!this.browserRefresh);
+    if (!this.browserRefresh)
+      return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    return false;
   }
 }
