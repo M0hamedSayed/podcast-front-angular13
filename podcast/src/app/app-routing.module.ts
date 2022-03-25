@@ -8,7 +8,7 @@ export const routes: Routes = [
   { path: "", loadChildren: () => import("./pages/home-page/home-page.module").then(m => m.HomePageModule), data: { animation: 'isLeft' } },
   { path: "register", loadChildren: () => import("./pages/register/register.module").then(m => m.RegisterModule), data: { animation: 'isRight' } },
   { path: 'register', redirectTo: "/signup", pathMatch: "full" },
-  // { path: "login", loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule), data: { animation: 'isRight' } }
+  { path: "password", loadChildren: () => import('./pages/forget-password/forget-password.module').then(m => m.ForgetPasswordModule), data: { animation: 'isRight' } }
 ];
 
 @NgModule({

@@ -5,7 +5,10 @@ import { FormBuilder, Validators, AbstractControl, ValidationErrors } from '@ang
   providedIn: 'root'
 })
 export class ValidationAuthService {
-
+  emailValidation = (fb: FormBuilder) => {
+    // return fb.control({value:'', Validators:[Validators.required, Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]})
+    return fb.group({ email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]] })
+  }
 
   speakerValidation = (fb: FormBuilder) => {
     return fb.group({

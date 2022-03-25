@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RouterModule } from '@angular/router';
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -13,13 +15,15 @@ import { RouterModule } from '@angular/router';
   declarations: [
     SpeakerFormComponent,
     StudentFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ForgetpassComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SweetAlert2Module.forRoot(),
     RouterModule
   ],
   exports: [

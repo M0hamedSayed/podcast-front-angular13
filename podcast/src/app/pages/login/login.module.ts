@@ -5,9 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// const routes: Routes = [
-//   { path: "", component: LoginComponent }
-// ]
+
 
 
 @NgModule({
